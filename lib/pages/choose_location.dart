@@ -11,6 +11,8 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
+  // function called when pressing one of the desired worldtime then send the data of that indexed object to the home page
+  // since that the getTime is async function so it must wait to done and send the data back
   void updateTime(index) async {
     WorldTime worldTime = locations[index];
     await worldTime.getTime();
@@ -22,6 +24,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     });
   }
 
+  // some pre-defined worldTime objectes that created --> could be replaced with another or being add up
   List<WorldTime> locations = [
     WorldTime('Europe/London', 'London', 'uk.png'),
     WorldTime('Europe/Athens', 'Athens', 'greece.png'),

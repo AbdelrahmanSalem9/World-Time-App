@@ -10,6 +10,7 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   void setupWorldTime() async {
+    //make cairo the default loading time on the home screen
     WorldTime worldTime = WorldTime('Africa/Cairo', 'Cairo', 'egypt.png');
     await worldTime.getTime();
 

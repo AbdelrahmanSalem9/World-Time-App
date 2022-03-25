@@ -12,6 +12,8 @@ class WorldTime {
   WorldTime(this.url, this.location, this.flagUrl);
 
   Future<void> getTime() async {
+    //using simple free API that make http request and get simple json file containing the data desired
+    // we only need the datetime attribute and utc_offset
     try {
       Response response =
           await get(Uri.parse("http://worldtimeapi.org/api/timezone/$url"));
@@ -22,9 +24,11 @@ class WorldTime {
       DateTime now = DateTime.parse(datetime);
       now = now.add(Duration(hours: int.parse(offset)));
 
+      // the daytime and night time feature need to be check and stored inside an attribute of the object
       isDaytime = now.hour > 6 && now.hour < 19 ? true : false;
       time = DateFormat.jm().format(now);
     } catch (e) {
+      // checking any failure
       time = "Could not get the time";
     }
   }
